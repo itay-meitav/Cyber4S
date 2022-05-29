@@ -1,0 +1,10 @@
+{
+  "name": "tsc",
+  "scripts": {
+    "calculateExercises": "node result/exerciseCalculator.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "typescript": "^4.6.4"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "tsc",
+  "scripts": {
+    "calculateBmi": "node result/miCalculator.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "typescript": "^4.6.4"
+  }
+}
