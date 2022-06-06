@@ -1,0 +1,188 @@
+html {
+  min-height: 200%;
+  background-image: linear-gradient(to bottom, #e0ebdd, #ece5cb);
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 250px;
+}
+
+.block {
+  position: absolute;
+  left: 50px;
+  top: 4%;
+  background-color: white;
+  width: 41%;
+  max-height: fit-content;
+  border-radius: 25px;
+  padding: 30px 40px;
+  box-shadow: 0 0 7px #000;
+}
+
+h2 {
+  margin: 0;
+  color: black;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+}
+
+li {
+  margin: 6px 0;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+ul li:hover {
+  background: #ddd;
+}
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+ul li.checked::before {
+  content: "";
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.edit {
+  text-align: center;
+  position: absolute;
+  right: 10%;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+.edit:hover {
+  background-color: #33e323;
+  color: white;
+}
+
+.header {
+  padding: 30px 40px;
+  color: white;
+}
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+input {
+  margin: 0;
+  border-color: #888;
+  width: 45%;
+  padding: 10px;
+  float: left;
+  font-size: 15px;
+  border-radius: 0.5rem;
+}
+
+#addBtn {
+  padding: 11.5px;
+  position: absolute;
+  left: 48%;
+  width: 10%;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  background-image: linear-gradient(-180deg, #37aee2 0%, #1e96c8 100%);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+#addBtn:hover {
+  background-image: linear-gradient(-180deg, #1d95c9 0%, #17759c 100%);
+}
+
+#removeAll {
+  background-color: initial;
+  background-image: linear-gradient(-180deg, #ff7e31, #e62c03);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  margin-top: 9%;
+  width: 25%;
+  left: 27%;
+  z-index: 9;
+  border: 0;
+  transition: box-shadow 0.2s;
+}
+#removeAll:hover {
+  box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+}
+
+p {
+  margin-top: 12%;
+  position: relative;
+  white-space: nowrap;
+  left: 9%;
+  display: inline-block;
+  font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+}

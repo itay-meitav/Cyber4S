@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/182/182942.png">
+    <title>Todo</title>
+</head>
+<body>
+    <div class="block">
+    <div id="myDIV" class="header">
+        <h2>My To Do List</h2><br>
+        <input type="text" id="myInput" placeholder="E.g. Build a web app">
+        <span onclick="newElement()" id="addBtn">+</span>
+        </div>
+
+      <ul id="myUL">
+      </ul>
+
+    <p>You have <span id="taskNumber"></span> pending tasks</p>
+    <span onclick="removeAll()" id="removeAll">Clear All</span>
+</div>
+<script src="./result/TODO.js"></script>
+</body>
+</html>
