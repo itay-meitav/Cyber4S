@@ -1,134 +1,166 @@
 "use strict";
-let gameState = "start";
-let board = document.getElementById("board");
-let board_coord = board.getBoundingClientRect();
-let paddle_1 = document.getElementById("paddle_1");
-let paddle_2 = document.getElementById("paddle_2");
-let paddle_1_coord = paddle_1.getBoundingClientRect();
-let paddle_2_coord = paddle_2.getBoundingClientRect();
-let paddles = document.querySelector(".paddle")?.getBoundingClientRect();
-let ball = document.getElementById("ball");
-let ball_coord = document.getElementById("ball")?.getBoundingClientRect();
-let score_1 = document.getElementById("player_1_score");
-let score_2 = document.getElementById("player_2_score");
-let message = document.getElementById("message");
-let ballSpeed = 1;
-let ballX = ball_coord.left;
-let ballY = ball_coord.top;
-let ballXDirection;
-let ballYDirection;
-let ballRadius = ball.style.borderRadius;
-function initGame() {
-    document.addEventListener("keydown", (e) => {
-        const keyPressed = e.key;
-        if (keyPressed === "Enter") {
-            gameState = "play";
-            message.innerHTML = "Game Started";
-            message.style.left = 42 + "vw";
-            paddlesKeys();
-            ball.style.visibility = "visible";
-            requestAnimationFrame(moveBall);
-            checkCollision();
+const gameBoard = document.querySelector("#gameBoard");
+const ctx = gameBoard.getContext("2d");
+const scoreText = document.querySelector("#scoreText");
+const gameWidth = gameBoard.width;
+const gameHeight = gameBoard.height;
+const boardBackground = "black";
+const paddle1Color = "white";
+const paddle2Color = "white";
+const paddleBorder = "black";
+const ballColor = "white";
+const ballBorderColor = "black";
+const ballRadius = 12.5;
+const paddleSpeed = 50;
+let intervalID;
+let ballSpeed;
+let ballX = gameWidth / 2;
+let ballY = gameHeight / 2;
+let ballXDirection = 0;
+let ballYDirection = 0;
+let player1Score = 0;
+let player2Score = 0;
+let paddle1 = {
+    width: 25,
+    height: 100,
+    x: 0,
+    y: 0
+};
+let paddle2 = {
+    width: 25,
+    height: 100,
+    x: gameWidth - 25,
+    y: gameHeight - 100
+};
+
+window.addEventListener("keydown", changeDirection);
+
+gameStart();
+
+function gameStart(){
+    createBall();
+    nextTick();
+};
+function nextTick(){
+    intervalID = setTimeout(() => {
+        clearBoard();
+        drawPaddles();
+        moveBall();
+        drawBall(ballX, ballY);
+        checkCollision();
+        nextTick();
+    }, 10)
+};
+function clearBoard(){
+    ctx.fillStyle = boardBackground;
+    ctx.fillRect(0, 0, gameWidth, gameHeight);
+};
+function drawPaddles(){
+    ctx.strokeStyle = paddleBorder;
+
+    ctx.fillStyle = paddle1Color;
+    ctx.fillRect(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
+    ctx.strokeRect(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
+
+    ctx.fillStyle = paddle2Color;
+    ctx.fillRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
+    ctx.strokeRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
+};
+function createBall(){
+    ballSpeed = 1;
+    if(Math.round(Math.random()) == 1){
+        ballXDirection =  1; 
+    }
+    else{
+        ballXDirection = -1; 
+    }
+    if(Math.round(Math.random()) == 1){
+        ballYDirection = Math.random() * 1; //more random directions
+    }
+    else{
+        ballYDirection = Math.random() * -1; //more random directions
+    }
+    ballX = gameWidth / 2;
+    ballY = gameHeight / 2;
+    drawBall(ballX, ballY);
+};
+function moveBall(){
+    ballX += (ballSpeed * ballXDirection);
+    ballY += (ballSpeed * ballYDirection);
+};
+function drawBall(ballX, ballY){
+    ctx.fillStyle = ballColor;
+    ctx.strokeStyle = ballBorderColor;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(ballX, ballY, ballRadius, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.fill();
+};
+function checkCollision(){
+    if(ballY <= 0 + ballRadius){
+        ballYDirection *= -1;
+    }
+    if(ballY >= gameHeight - ballRadius){
+        ballYDirection *= -1;
+    }
+    if(ballX <= 0){
+        player2Score+=1;
+        updateScore();
+        createBall();
+        return;
+    }
+    if(ballX >= gameWidth){
+        player1Score+=1;
+        updateScore();
+        createBall();
+        return;
+    }
+    if(ballX <= (paddle1.x + paddle1.width + ballRadius)){
+        if(ballY > paddle1.y && ballY < paddle1.y + paddle1.height){
+            ballX = (paddle1.x + paddle1.width) + ballRadius; // if ball gets stuck
+            ballXDirection *= -1;
+            ballSpeed += 1;
         }
-    });
-}
-initGame();
-function paddlesKeys() {
-    if (gameState === "play") {
-        document.addEventListener("keydown", (e) => {
-            const keyPressed = e.key;
-            const paddle1Up = "w";
-            const paddle1Down = "s";
-            const paddle2Up = "ArrowUp";
-            const paddle2Down = "ArrowDown";
-            switch (keyPressed) {
-                case paddle1Up:
-                    paddle_1.style.top =
-                        Math.max(board_coord.top + 8, paddle_1_coord.top - window.innerHeight * 0.06) + "px";
-                    paddle_1_coord = paddle_1.getBoundingClientRect();
-                    break;
-                case paddle1Down:
-                    paddle_1.style.top =
-                        Math.min(board_coord.bottom - 8 - paddles.height, paddle_1_coord.top + window.innerHeight * 0.06) + "px";
-                    paddle_1_coord = paddle_1.getBoundingClientRect();
-                    break;
-                case paddle2Up:
-                    paddle_2.style.top =
-                        Math.max(board_coord.top + 8, paddle_2_coord.top - window.innerHeight * 0.1) + "px";
-                    paddle_2_coord = paddle_2.getBoundingClientRect();
-                    break;
-                case paddle2Down:
-                    paddle_2.style.top =
-                        Math.min(board_coord.bottom - 8 - paddles.height, paddle_2_coord.top + window.innerHeight * 0.1) + "px";
-                    paddle_2_coord = paddle_2.getBoundingClientRect();
-                    break;
+    }
+    if(ballX >= (paddle2.x - ballRadius)){
+        if(ballY > paddle2.y && ballY < paddle2.y + paddle2.height){
+            ballX = paddle2.x - ballRadius; // if ball gets stuck
+            ballXDirection *= -1;
+            ballSpeed += 1;
+        }
+    }
+};
+function changeDirection(event){
+    const keyPressed = event.keyCode;
+    const paddle1Up = 87;
+    const paddle1Down = 83;
+    const paddle2Up = 38;
+    const paddle2Down = 40;
+
+    switch(keyPressed){
+        case(paddle1Up):
+            if(paddle1.y > 0){
+                paddle1.y -= paddleSpeed;
             }
-        });
+            break;
+        case(paddle1Down):
+            if(paddle1.y < gameHeight - paddle1.height){
+                paddle1.y += paddleSpeed;
+            }
+            break;
+        case(paddle2Up):
+            if(paddle2.y > 0){
+                paddle2.y -= paddleSpeed;
+            }
+            break;
+        case(paddle2Down):
+            if(paddle2.y < gameHeight - paddle2.height){
+                paddle2.y += paddleSpeed;
+            }
+            break;
     }
-}
-function checkCollision() {
-    if (ballY <= 0 + ballRadius) {
-        ballYDirection *= -1;
-    }
-    if (ballY >= board_coord.height - ballRadius) {
-        ballYDirection *= -1;
-    }
-    if (ballX <= 0) {
-        score_2 += 1;
-        resetGame();
-        initGame();
-    }
-    if (ballX >= board_coord.width) {
-        score_1 += 1;
-        resetGame();
-        initGame();
-    }
-    if (ballX <= paddle_1_coord.left + paddles.width + ballRadius) {
-        if (ballY > paddle_1_coord.top && ballY < paddle_1_coord.top + paddles.height) {
-            ballX = paddle_1_coord.left + paddles.width + ballRadius; // if ball gets stuck
-            ballXDirection *= -1;
-            ballSpeed += 1;
-        }
-    }
-    if (ballX >= paddle_2_coord.right - ballRadius) {
-        if (ballY > paddle_2_coord.top && ballY < paddle_2_coord.top + paddles.height) {
-            ballX = paddle_2_coord.right - ballRadius; // if ball gets stuck
-            ballXDirection *= -1;
-            ballSpeed += 1;
-        }
-    }
-}
-function moveBall() {
-    if ((gameState = "play")) {
-        console.log(ballX);
-        if (Math.round(Math.random()) == 1) {
-            ballXDirection = 1;
-        }
-        else {
-            ballXDirection = -1;
-        }
-        if (Math.round(Math.random()) == 1) {
-            ballYDirection = Math.random() * 1; //more random directions
-        }
-        else {
-            ballYDirection = Math.random() * -1; //more random directions
-        }
-        ballX = ballSpeed * ballXDirection;
-        ballY = ballSpeed * ballYDirection;
-        console.log(ballX);
-    }
-}
-function resetGame() {
-    gameState = "start";
-    message.innerHTML = "Press Enter to Play";
-    message.style.left = 38 + "vw";
-    ball.style.visibility = "hidden";
-    ball.style.setProperty('top', ball_coord.top);
-    ball.style.setProperty('left', ball_coord.left);
-    ball_coord = ball.getBoundingClientRect();
-    //   paddle_1.style.top = "calc(7.5vh + 55px)";
-    //   paddle_1.style.left = "calc(10vw + 30px)";
-    //   paddle_2.style.top = "calc(85vh + 7.5vh - 100px - 55px)";
-    //   paddle_2.style.right = "calc(10vw + 30px)";
-    return;
-}
+};
+function updateScore(){
+    scoreText.textContent = `${player1Score} : ${player2Score}`;
+};
