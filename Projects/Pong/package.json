@@ -1,0 +1,30 @@
+{
+  "name": "gulp_scss",
+  "scripts": {
+    "start": "gulp",
+    "lint": "eslint ./src/ts --ext .ts",
+    "lint-fix": "eslint ./src/ts --ext .ts --fix",
+    "test": "gulp test",
+    "build": "npx tsc"
+  },
+  "dependencies": {
+    "@types/jest": "^27.5.2",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "browser-sync": "^2.27.9",
+    "eslint": "^8.16.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "jest": "^28.1.0",
+    "sass": "^1.51.0",
+    "ts-jest": "^28.0.3",
+    "typescript": "^4.7.2"
+  },
+  "version": "1.0.0",
+  "main": "./result/TODO.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
