@@ -1,0 +1,53 @@
+html {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#box1, #box2, #box3, #box4 {
+  height: 110px;
+  width: 110px;
+  background-color: orange;
+  display: inline-block;
+  border-style: dashed;
+  border-color: yellow;
+  border-radius: 15%;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+#pa1,
+#pa2,
+#pa3,
+#pa4 {
+  padding: 15px;
+  margin: 20px;
+  height: 150px;
+  width: 150px;
+  display: inline-block;
+  border-style: dashed;
+  text-align: center;
+  border-color: orange;
+  border-radius: 15%;
+}
+
+.none {
+  display: none !important;
+}
+
+.hidden {
+  visibility: hidden !important;
+}
+
+.opacity {
+  opacity: 0 !important;
+}
+
+.block {
+  display: inline-block !important;
+}

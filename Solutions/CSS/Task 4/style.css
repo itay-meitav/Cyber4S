@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.item {
+  background-color: light;
+  width: fit-content;
+  text-align: center;
+  border-radius: 8px;
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(145, 145, 243);
+  border: 1px solid rgb(73, 73, 73);
+  font-size: 16px;
+  font-family: "Lato";
+}
+
+p.ice-cream::first-letter {
+  color: white;
+}
+
+.container button.ice-cream:hover {
+  background-color: cyan;
+}
+
+.container #cake {
+  color: yellow;
+}
+
+button[funny="yes"] {
+  color: yellow;
+}

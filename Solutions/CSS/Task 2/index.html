@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="pa1">
+      <div id="box1" onclick="addClass('none')">Pizza</div>
+      <p>Display: none</p>
+    </div>
+    <div id="pa2">
+      <div id="box2"  onclick="addClass('hidden')">Pasta</div>
+      <p>visibility: hidden</p>
+    </div>
+    <div id="pa3">
+      <div id="box3"  onclick="addClass('opacity')">Burger</div>
+      <p>opacity: 0</p>
+    </div>
+    <div id="pa4">
+      <div id="box4"  onclick="addClass('block')">Ice Cream</div>
+      <p>Display: Block</p>
+    </div>
+    <script>
+      function addClass (className) {
+        let box1 = document.getElementById("box1");
+        let box2 = document.getElementById("box2");
+        let box3 = document.getElementById("box3");
+        let box4 = document.getElementById("box4");
+        if (className === 'none'){box1.classList.toggle("none")};
+        if (className === 'hidden'){box2.classList.toggle("hidden")};
+        if (className === 'opacity'){box3.classList.toggle("opacity")};
+        if (className === 'block'){box4.classList.toggle("block")};
+      }
+    </script>
+  </body>
+</html>

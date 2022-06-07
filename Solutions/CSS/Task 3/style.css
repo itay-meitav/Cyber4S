@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    color: rgba(115, 68, 159, 0.789);
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    background-color: rgba(161, 95, 222, 0.789);
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item {
+    padding: 2rem;
+    border-left: 2px solid rgba(115, 68, 159, 0.789);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.nav-item:last-child {
+    border-right: 2px solid rgba(115, 68, 159, 0.789);
+}
+
+.nav-item a:link,
+.nav-item a:visited {
+    text-decoration: none;
+    color: rgba(115, 68, 159, 0.789);
+    font-size: 2rem;
+}
+.nav-item a:hover,
+.nav-item a:active {
+    color: rgb(232, 148, 45);
+}
+
+.drop-bar {
+    display: none;
+}
+
+.dropbar-btn:hover .drop-bar {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    pointer-events: all;
+    top: 100%;
+}
+
+.drop-bar .nav-item,
+.drop-bar .nav-item:last-child {
+    border: none;
+    border-bottom: 2px solid rgba(115, 68, 159, 0.789);
+    background-color: rgba(161, 95, 222, 0.789);
+    cursor: pointer;
+}
