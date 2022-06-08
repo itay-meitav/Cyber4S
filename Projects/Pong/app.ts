@@ -12,9 +12,8 @@ const ballBorderColor: string = "black";
 const ballRadius: number = 12.5;
 const paddleSpeed: number = 50;
 let ballSpeed: number;
-let intervalID: any;
-export let ballX: number = gameWidth / 2;
-export let ballY: number = gameHeight / 2;
+let ballX: number = gameWidth / 2;
+let ballY: number = gameHeight / 2;
 let ballXDirection: number = 0;
 let ballYDirection: number = 0;
 let player1Score: number = 0;
@@ -33,8 +32,6 @@ let paddle2 = {
 };
 
 window.addEventListener("keydown", changeDirection);
-// resetBtn.addEventListener("click", resetGame);
-
 gameStart();
 
 function gameStart() {
@@ -43,7 +40,7 @@ function gameStart() {
 }
 
 function nextTick() {
-  intervalID = setTimeout(() => {
+  setTimeout(() => {
     clearBoard();
     drawPaddles();
     moveBall();
@@ -87,7 +84,7 @@ function createBall() {
   drawBall(ballX, ballY);
 }
 
-export function moveBall() {
+function moveBall() {
   ballX += ballSpeed * ballXDirection;
   ballY += ballSpeed * ballYDirection;
 }
