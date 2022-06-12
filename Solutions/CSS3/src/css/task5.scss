@@ -1,0 +1,58 @@
+@use "sass:color";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+@mixin text-shadow($color, $n) {
+	color: $color;
+	$value: 1px 1px darken($color, $amount: 10);
+	@for $i from 2 through $n {
+		$amount: $i * 0.3 + 10;
+		@if $amount > 100 {
+			$amount: 100;
+		}
+		$value: $value, $i * 1px $i * 1px darken($color, $amount);
+	}
+	text-shadow: $value;
+}
+
+body {
+	// background-color: red;
+
+	.container {
+		height: 100vh;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: flex-start;
+		background-color: hsl(46deg 100% 94%);
+		h1,
+		h2,
+		h3 {
+			text-transform: uppercase;
+			font-weight: bold;
+			font-family: "Lato", sans-serif;
+			line-height: 1.5;
+			margin-left: 40px;
+		}
+
+		.amazing {
+			font-size: 7rem;
+			@include text-shadow(rgb(79, 227, 203), 120);
+		}
+
+		.shadow {
+			font-size: 6rem;
+			// color: hsl(249deg 58% 62%);
+			@include text-shadow(hsl(249deg 58% 62%), 120);
+		}
+
+		.affect {
+			font-size: 5rem;
+			@include text-shadow(rgb(244, 149, 211), 120);
+		}
+	}
+}

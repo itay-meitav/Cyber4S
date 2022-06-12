@@ -1,0 +1,27 @@
+body {
+	background-color: rgb(238, 205, 238);
+	> h1 {
+		text-align: center;
+	}
+
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 40px;
+
+		.item {
+			width: calc(49% - 50px);
+			background-color: rgb(219, 228, 161);
+			padding: 15px;
+			border: 2px solid rgb(248, 179, 51);
+			img {
+				width: 100%;
+			}
+
+			@media only screen and (max-width: 580px) {
+				width: 80%;
+			}
+		}
+	}
+}
