@@ -1,4 +1,6 @@
-interface ISpec {
+import { ListFormat } from "typescript";
+
+export interface ISpec {
   brand: string;
   type: string;
   model: string;
@@ -9,7 +11,7 @@ interface ISpec {
   os: string;
 }
 
-interface IProduct {
+export interface IProduct {
   price: number;
   img: string;
   currency: string;
@@ -569,3 +571,55 @@ export const laptops: IProduct[] = [
       "https://creatixcdn.azureedge.net/fetch/pc365/w_93,h_53,mode_pad,v_13/https://www.pc365.co.il/images/New_Partner_Wh_Blu.png",
   },
 ];
+
+
+if (!getFromLocal().length) resetOnLocal();
+
+export function saveOnLocal(list: IProduct[]) {
+  //   list.forEach(element => {
+  //   window.localStorage.setItem(`${element.id}`, JSON.stringify(element));
+  // });
+
+  localStorage.setItem('products', JSON.stringify(list))
+}
+
+function resetOnLocal() {
+  saveOnLocal(laptops);
+}
+
+export function getFromLocal() {
+  // let itemArray=[];
+  //   for (const item in localStorage) {
+  //     if(localStorage.getItem(item)!=null){
+  //       itemArray.push(JSON.parse(localStorage.getItem(item)!));
+  //     }
+  //   }
+
+  //  return itemArray;
+  return JSON.parse(localStorage.getItem('products') || '[]') as IProduct[]
+}
+
+// Delete an item (for admin only)
+export function removeItem(id: string) {
+  let products = getFromLocal();
+  products = products.filter(product => product.id != id)
+  console.log(products);
+  saveOnLocal(products);
+}
+
+export function editLocalStorage(newProduct: IProduct) {
+  let products = getFromLocal();
+  console.log(products);
+
+  products = products.map(product => {
+    if (product.id === newProduct.id)
+      return newProduct
+    return product
+  })
+}
+
+export function getItemByID(id: string): IProduct {
+  let product = getFromLocal();
+  product = product.filter(p => p.id == id)
+  return product[0]
+}

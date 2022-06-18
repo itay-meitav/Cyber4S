@@ -1,11 +1,12 @@
 module.exports = {
   mode: 'development',
-  entry: "./dist/tsc/app.js",
+  entry: {
+    app: './dist/tsc/app.js',
+  },
   devtool: "source-map",
   output: {
-    filename: "app.js",
-    library: "app"
-  },
+        filename: '[name].js',
+      },
   module: {
     rules: [
       {

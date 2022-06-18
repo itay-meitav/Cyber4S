@@ -198,22 +198,18 @@ nav {
 }
 
 .paramsearchtable {
-  & td {
+  td {
     width: 130px;
     white-space: nowrap;
     overflow: hidden;
     padding-left: 20px;
   }
-  & div {
+  div {
     color: #666;
     display: block;
     padding: 5px;
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-    }
   }
-  & .title {
+  .title {
     margin-bottom: 5px;
     color: #000;
     font-weight: 700;
@@ -221,10 +217,73 @@ nav {
     padding: 5px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
   }
-  & tr {
+  tr {
     display: inline-block;
   }
+  .sortedItem {
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+   .bubble {
+  //  display: none;
+    margin-top: 35px;
+    min-width: fit-content;
+    position: absolute;
+    width: 150px;
+    background-color: #fff;
+    border: 2px solid #666;
+    padding: 5px;
+    z-index: 999;
+    animation: popup 0.2s ease-out;
+  }
+
+  //   .additional .bubble {
+  //     // display: none;
+  //   margin-top: 15px;
+  //   min-width: fit-content;
+  //   width: 150px;
+  //   position: absolute;
+  //   background-color: #fff;
+  //   border: 2px solid #666;
+  //   padding: 5px;
+  //   z-index: 999;
+  //   animation: popup 0.2s ease-out;
+  // }
+
+  @keyframes popup {
+    0%{
+      transform: scale(1);
+      opacity: 0;
+    }
+    30%{
+      transform: scale(1.2);
+      opacity: 0.3;
+    }
+    50%{
+      transform: scale(1.1);
+      opacity: 0.6;
+    }
+    80%{
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100%{
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .openBubble {
+    &:hover {
+      cursor: pointer;
+      color: rgb(154, 154, 154);
+      text-decoration: underline;
+    }
+  }
 }
+
 
 .paramswrapper {
   display: grid;
@@ -237,7 +296,7 @@ nav {
 }
 
 
-.sortlist {      
+.sortList {      
   color: #666;
   clear: both;
   display: flex;
@@ -246,63 +305,83 @@ nav {
   overflow: hidden;
   white-space: nowrap;
   padding: 2%;
-  & div {
+  div {
     color: #666;
     &:hover {
       cursor: pointer;
       color: #888;
+      text-decoration: underline;
     }
   }
-  & span {
+  span {
     color: #ccc;
     padding-right: 4px;
     padding-left: 4px;
   }
 }
 
+#filterList {
+  color: #666;
+  clear: both;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 2px;
+  margin-bottom: 50px;
+}
+
+.filterItem {
+  margin: 7px;
+  &:hover {
+    cursor: pointer;
+    color: rgb(228, 108, 108);
+    text-decoration: underline;
+  }
+}
+
 .laptop {
+  display: flex;
   position: relative;
   color: black;
   font-family: $font-famaly;
   background-color: whitesmoke;
   border-radius: 5px;
   margin: 8px;
-  & .title {
+  .title {
+    flex: auto;
     position: absolute;
     top: 5%;
     left: 20%;
   }
-  & .price {
+  .price {
     position: absolute;
     bottom: 10%;
     right: 4%;
     font-size: 18pt;
   }
-  & .itemImg {
-    top: 80%;
-    left: 3%;
+  .itemImg {
+    // // position: absolute;
+    // top: 2px;
+    // left: 3px;
   }
-  & .logoImg {
+  .logoImg {
     position: absolute;
     top: 27%;
     right: 3%;
   }
-  & .specs {
+  .specs {
     position: absolute;
     top: 25%;
     left: 20%;
     font-size: 10pt;
+    width: 570px;
   }
-  & .serial {
+  .serial {
     position: absolute;
     top: 10%;
     right: 2.5%;
     font-size: 9pt;
-  }
-  & .specs {
-    width: 500px;
-   display: flex;
-   flex-wrap: wrap;
-   gap: 6px;
   }
 }

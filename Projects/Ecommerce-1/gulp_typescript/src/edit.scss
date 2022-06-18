@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: rgba(48, 47, 216, 0.5);
+  padding-top: 10px;
+  padding-bottom: 0px;
+}
+
+#outButton {
+    a {
+      text-decoration: none !important;
+      text-align: center;
+      font-weight:bold;
+      font-family: "Raleway";
+      color:rgb(0, 0, 0);
+    }
+    position: relative;
+    left: 2%;
+    top: 20px;
+    text-align: center;
+    width: max-content;
+    background-color: rgba(255, 255, 255, 0.868);
+    padding: 10px 30px 10px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition-duration: 400ms;
+    &:hover {
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.322);
+      cursor: pointer;
+    }
+  }
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+  font-family: "Poppins", sans-serif;
+  padding-left: 5px;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  font-family: "Poppins", sans-serif;
+}
+.fields {
+  background: rgba(48, 47, 16, 0.9);
+  width: 50%;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #ffffff;
+  text-align: left;
+  padding: 35px 60px 40px 50px;
+}
+
+#submit {
+    margin-top: 20px;
+  width: 100%;
+  min-height: 50px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  background-color: #56b166;
+  color: #fff;
+  border: 1px solid #56b166;
+  &:hover {
+background: darken(#56b166, 5%);
+  cursor: pointer;
+  }
+}
+
+.inputs {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  padding-left: 5px;
+}
+

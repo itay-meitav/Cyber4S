@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Item</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="edit.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div id="outButton"><a href="http://localhost:4000/admin.html">&#10060 Out</a></div>
+    <h1 id="title">Edit Item</h1>
+    <div class="fields">
+      <form id="form">
+          <label class="label">Price</label>
+          <input class="inputs" type="number" id="Price" min="1" required />
+          <label class="label">Image</label>
+          <input class="inputs" type="text" id="Image" required />
+          <label class="label">Currency</label>
+          <input class="inputs" type="text" id="Currency" max="1" required />
+          <label class="label">Title</label>
+          <input class="inputs" type="text" id="Title" required />
+          <label class="label">Brand</label>
+          <input class="inputs" type="text" id="Brand" required />
+          <label class="label">Type</label>
+          <input class="inputs" type="text" id="Type" required />
+          <label class="label">Model</label>
+          <input class="inputs" type="text" id="Model" required />
+          <label class="label">Ram</label>
+          <input class="inputs" type="text" id="Ram" required />
+          <label class="label">Memory</label>
+          <input class="inputs" type="text" id="Memory" required />
+          <label class="label">Processor</label>
+          <input class="inputs" type="text" id="Processor" required />
+          <label class="label">Resolution</label>
+          <input class="inputs" type="text" id="Resolution" required />
+          <label class="label">os</label>
+          <input class="inputs" type="text" id="Os" required />
+          <label class="label">Company Logo</label>
+          <input class="inputs" type="text" id="CompanyLogo" required />
+        <button id="submit" type="submit">Save Changes</button>
+      </form>
+    </div>
+  </body>
+</html>

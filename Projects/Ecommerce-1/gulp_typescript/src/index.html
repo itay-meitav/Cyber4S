@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
     <title>Store</title>
   </head>
   <body>
@@ -65,6 +66,7 @@
               <li><a href="#">Smart Watches For Kids</a></li>
             </ul>
           </li>
+          <li><a href="./admin.html">Admin</a></li>
         </ul>
         <form>
           <input class="search" type="text" placeholder="Search..." />
@@ -80,88 +82,102 @@
             <tr valign="top">
               <td>
                 <div class="title">Price</div>
-                <div id="sortedItem">300$-600$</div>
-                <div id="sortedItem">Up to 300$</div>
-                <div id="sortedItem">600$-900$</div>
-                <div id="sortedItem">900$-1200$</div>
-                <div id="sortedItem">1200$-1500$</div>
-                <div id="sortedItem">1500$-1800$</div>
-                <div id="sortedItem">2100$-2400$</div>
-                <div id="sortedItem">2700$-3000$</div>
-                <div id="sortedItem">Above 3000$</div>
-              </td>
-            </tr>
-            <tr valign="top">
-              <td>
-                <div class="title">Subcategory</div>
-                <div id="sortedItem">Mobile computers</div>
-                <div id="sortedItem">Apple laptops</div>
-                <div id="sortedItem">Business laptops</div>
-                <div id="sortedItem">Laptops for gamers</div>
-                <div id="sortedItem">Student laptops</div>
-                <div id="sortedItem">2in1 laptops</div>
+                <div class="sortedItem" spec="price">2000$-3000$</div>
+                <div class="sortedItem" spec="price">3000$-4000$</div>
+                <div class="sortedItem" spec="price">4000$-5000$</div>
+                <div class="sortedItem" spec="price">5000$-6000$</div>
+                <div class="sortedItem" spec="price">6000$-7000$</div>
+                <div class="sortedItem" spec="price">7000$-8000$</div>
+                <div class="sortedItem" spec="price">8000$-9000$</div>
+                <div class="sortedItem" spec="price">9000$-10000$</div>
+                <div class="sortedItem" spec="price">Above 10000$</div>
               </td>
             </tr>
             <tr valign="top">
               <td>
                 <div class="title">Manufacturer</div>
-                <div id="sortedItem">Dell</div>
-                <div id="sortedItem">Lenovo</div>
-                <div id="sortedItem">HP</div>
-                <div id="sortedItem">Asus</div>
-                <div id="sortedItem">Apple</div>
-                <div id="sortedItem">Microsoft</div>
+                <div class="sortedItem" spec="brand">Dell</div>
+                <div class="sortedItem" spec="brand">Lenovo</div>
+                <div class="sortedItem" spec="brand">HP</div>
+                <div class="sortedItem" spec="brand">Asus</div>
+                <div class="sortedItem" spec="brand">Apple</div>
+                <div class="sortedItem" spec="brand">Microsoft</div>
+                <div class="bubble" style="display: none;">
+                <div class="sortedItem" spec="brand">Acer</div>
+                <div class="sortedItem" spec="brand">Alienware</div>
+                </div>
+                <div class="openBubble"><b>else...</b></div>
               </td>
             </tr>
             <tr valign="top">
               <td>
-                <div class="title">Screen size</div>
-                <div id="sortedItem">15.6"</div>
-                <div id="sortedItem">14.0"</div>
-                <div id="sortedItem">13.3"</div>
-                <div id="sortedItem">17.3"</div>
-                <div id="sortedItem">10.1"</div>
-                <div id="sortedItem">12.9"</div>
-                <div id="sortedItem">12"</div>
-                <div id="sortedItem">7"</div>
-                <div id="sortedItem"><b>More Sizes...</b></div>
+                <div class="title">Memory Capacity</div>
+                  <div class="sortedItem" spec="memory">256GB</div>
+                  <div class="sortedItem" spec="memory">512GB</div>
+                  <div class="sortedItem" spec="memory">1TB</div>
+              </td>
+            </tr>
+            <tr valign="top">
+              <td>
+                <div class="title">Operating System</div>
+                <div class="sortedItem" spec="os">macOS Monterey</div>
+                <div class="sortedItem" spec="os">Windows 10 Home</div>
+                <div class="sortedItem" spec="os">Windows 10 Pro</div>
+                <div class="sortedItem" spec="os">Windows 11 Home</div>
+                <div class="sortedItem" spec="os">Windows 11 Pro</div>
               </td>
             </tr>
             <tr valign="top">
               <td>
                 <div class="title">Processor</div>
-                <div id="sortedItem">Intel® Core™ i5 Processor</div>
-                <div id="sortedItem">Intel® Core™ i7 Processor</div>
-                <div id="sortedItem">Intel® Core™ i3 Processor</div>
-                <div id="sortedItem">Intel® Pentium® Processor</div>
-                <div id="sortedItem">Intel® Core™ i9 Processor</div>
-                <div id="sortedItem"><b>else...</b></div>
+                <div class="sortedItem" spec="processor">Intel® Core™ i5 Processor</div>
+                <div class="sortedItem" spec="processor">Intel® Core™ i7 Processor</div>
+                <div class="sortedItem" spec="processor">Intel® Core™ i3 Processor</div>
+                <div class="sortedItem" spec="processor">Intel® Pentium® Processor</div>
+                <div class="sortedItem" spec="processor">Intel® Core™ i9 Processor</div>
+                <div class="bubble" style="display: none;">
+                <div class="sortedItem" spec="processor">AMD Ryzen™ 5 Processor</div>
+                <div class="sortedItem" spec="processor">AMD Ryzen™ 7 Processor</div>
+                <div class="sortedItem" spec="processor">AMD Ryzen™ 3 Processor</div>
+                <div class="sortedItem" spec="processor">AMD Ryzen™ 9 Processor</div>
+                <div class="sortedItem" spec="processor">Apple M1 Pro</div>
+                <div class="sortedItem" spec="processor">Apple M1 Max</div>
+                </div>
+                <div class="openBubble"><b>else...</b></div>
               </td>
             </tr>
             <tr valign="top">
               <td>
                 <div class="title">Internal memory</div>
-                <div id="sortedItem">8GB</a></div>
-                <div id="sortedItem">4GB</a></div>
-                <div id="sortedItem">16GB</a></div>
-                <div id="sortedItem">2GB</a></div>
-                <div id="sortedItem">32GB</a></div>
-                <div id="sortedItem">1GB</a></div>
-                <div id="sortedItem"><b>else...</a></b></div>
+                <div class="sortedItem" spec="ram">1GB</div>
+                <div class="sortedItem" spec="ram">2GB</div>
+                <div class="sortedItem" spec="ram">4GB</div>
+                <div class="sortedItem" spec="ram">8GB</div>
+                <div class="sortedItem" spec="ram">16GB</div>
+                <div class="sortedItem" spec="ram">32GB</div>
+                <div class="bubble" style="display: none;">
+                <div class="sortedItem" spec="ram">3GB</div>
+                <div class="sortedItem" spec="ram">6GB</div>
+                <div class="sortedItem" spec="ram">24GB</div>
+                <div class="sortedItem" spec="ram">64GB</div>
+                </div>
+                <div class="openBubble"><b>else...</b></div>
               </td>
             </tr>
             <tr valign="top">
               <td>
-                <div class="title">Additional filters</div>
-                <div id="sortedItem">Operating System</a></div>
-                <div id="sortedItem">Series</a></div>
-                <div id="sortedItem">Storage capacity</a></div>
-                <div id="sortedItem">Graphics Card</a></div>
-                <div id="sortedItem">Warranty period</a></div>
-                <div id="sortedItem">Touch Screen</a></div>
-                <div id="sortedItem">Processor generation</a></div>
-                <div id="sortedItem">Cores</a></div>
-                <div id="sortedItem"><b>else...</a></b></div>
+                <div class="title">Resolution</div>
+                <div class="sortedItem" spec="resolution">1920x1080</div>
+                <div class="sortedItem" spec="resolution">1920x1200</div>
+                <div class="sortedItem" spec="resolution">2560x1440</div>
+                <div class="sortedItem" spec="resolution">3024x1964</div>
+                <div class="sortedItem" spec="resolution">3072x1920</div>
+                <div class="sortedItem" spec="resolution">3456x2234</div>
+                <!-- <div class="sortedItem">Graphics Card</div>
+                <div class="sortedItem">Warranty period</div>
+                <div class="sortedItem">Touch Screen</div>
+                <div class="sortedItem">Processor generation</div>
+                <div class="sortedItem">Cores</div> -->
               </td>
             </tr>
           </tbody>
@@ -170,7 +186,7 @@
     </section>
 
 
-    <div class="sortlist">Sort by: &#160;
+    <div class="sortList">Sort by: &#160;
       <div id="sortbygeneral">General</div>
       <span>|</span>
       <div id="sortbyname">Name</div>
@@ -179,9 +195,13 @@
       <span>|</span>
       <div id="sortbypricehigh">High price</div>
       </div>
+      <div id="filterList">Current Filters: </div>
 
+<main>
+  <div id="productList"></div>
+</main>
 
-<main id="main"></main>
   </body>
-  <script src="app.js"></script>
 </html>
+
+

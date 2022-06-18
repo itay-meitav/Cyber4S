@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <script src="app.js" defer></script>
+    <title>Admin</title>
+</head>
+
+<body>
+    <div class="container">
+
+        
+        <section class="openning">
+            <section class="out">
+            <div id="outButton"><a href="http://localhost:4000/">&#10060 Out</a></div>
+        </section>
+        <section class="openning-msg">
+            <div class="openning1">Welcome Back Admin,
+                What do you want to do today?</div>
+            </section>
+        </section>
+
+        <section>
+            <div class="paramswrapper">
+                <table cellpadding=" cellspacing=" 0" border="0" class="paramsearchtable">
+                    <tbody>
+                        <tr valign="top">
+                            <td>
+                                <div class="title">Price</div>
+                                <div class="sortedItem" spec="price">2000$-3000$</div>
+                                <div class="sortedItem" spec="price">3000$-4000$</div>
+                                <div class="sortedItem" spec="price">4000$-5000$</div>
+                                <div class="sortedItem" spec="price">5000$-6000$</div>
+                                <div class="sortedItem" spec="price">6000$-7000$</div>
+                                <div class="sortedItem" spec="price">7000$-8000$</div>
+                                <div class="sortedItem" spec="price">8000$-9000$</div>
+                                <div class="sortedItem" spec="price">9000$-10000$</div>
+                                <div class="sortedItem" spec="price">Above 10000$</div>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td>
+                                <div class="title">Manufacturer</div>
+                                <div class="sortedItem" spec="brand">Dell</div>
+                                <div class="sortedItem" spec="brand">Lenovo</div>
+                                <div class="sortedItem" spec="brand">HP</div>
+                                <div class="sortedItem" spec="brand">Asus</div>
+                                <div class="sortedItem" spec="brand">Apple</div>
+                                <div class="sortedItem" spec="brand">Microsoft</div>
+                                <div class="bubble" style="display: none;">
+                                    <div class="sortedItem" spec="brand">Acer</div>
+                                    <div class="sortedItem" spec="brand">Alienware</div>
+                                </div>
+                                <div class="openBubble"><b>else...</b></div>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td>
+                                <div class="title">Memory Capacity</div>
+                                <div class="sortedItem" spec="memory">256GB</div>
+                                <div class="sortedItem" spec="memory">512GB</div>
+                                <div class="sortedItem" spec="memory">1TB</div>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td>
+                                <div class="title">Operating System</div>
+                                <div class="sortedItem" spec="os">macOS Monterey</div>
+                                <div class="sortedItem" spec="os">Windows 10 Home</div>
+                                <div class="sortedItem" spec="os">Windows 10 Pro</div>
+                                <div class="sortedItem" spec="os">Windows 11 Home</div>
+                                <div class="sortedItem" spec="os">Windows 11 Pro</div>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td>
+                                <div class="title">Processor</div>
+                                <div class="sortedItem" spec="processor">Intel® Core™ i5 Processor</div>
+                                <div class="sortedItem" spec="processor">Intel® Core™ i7 Processor</div>
+                                <div class="sortedItem" spec="processor">Intel® Core™ i3 Processor</div>
+                                <div class="sortedItem" spec="processor">Intel® Pentium® Processor</div>
+                                <div class="sortedItem" spec="processor">Intel® Core™ i9 Processor</div>
+                                <div class="bubble" style="display: none;">
+                                    <div class="sortedItem" spec="processor">AMD Ryzen™ 5 Processor</div>
+                                    <div class="sortedItem" spec="processor">AMD Ryzen™ 7 Processor</div>
+                                    <div class="sortedItem" spec="processor">AMD Ryzen™ 3 Processor</div>
+                                    <div class="sortedItem" spec="processor">AMD Ryzen™ 9 Processor</div>
+                                    <div class="sortedItem" spec="processor">Apple M1 Pro chip</div>
+                                    <div class="sortedItem" spec="processor">Apple M1 Max chip</div>
+                                </div>
+                                <div class="openBubble"><b>else...</b></div>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td>
+                                <div class="title">Internal memory</div>
+                                <div class="sortedItem" spec="ram">1GB</div>
+                                <div class="sortedItem" spec="ram">2GB</div>
+                                <div class="sortedItem" spec="ram">4GB</div>
+                                <div class="sortedItem" spec="ram">8GB</div>
+                                <div class="sortedItem" spec="ram">16GB</div>
+                                <div class="sortedItem" spec="ram">32GB</div>
+                                <div class="bubble" style="display: none;">
+                                    <div class="sortedItem" spec="ram">3GB</div>
+                                    <div class="sortedItem" spec="ram">6GB</div>
+                                    <div class="sortedItem" spec="ram">24GB</div>
+                                    <div class="sortedItem" spec="ram">64GB</div>
+                                </div>
+                                <div class="openBubble"><b>else...</b></div>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td>
+                                <div class="title">Resolution</div>
+                                <div class="sortedItem" spec="resolution">1920x1080</div>
+                                <div class="sortedItem" spec="resolution">1920x1200</div>
+                                <div class="sortedItem" spec="resolution">2560x1440</div>
+                                <div class="sortedItem" spec="resolution">3024x1964</div>
+                                <div class="sortedItem" spec="resolution">3072x1920</div>
+                                <div class="sortedItem" spec="resolution">3456x2234</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="mid-page">
+            <div id="resetButton">Reset List</div>
+            <section class="sorts-filter">
+                <div class="sortList">Sort by: &#160;
+                    <div id="sortbygeneral">General</div>
+                    <span>|</span>
+                    <div id="sortbyname">Name</div>
+                    <span>|</span>
+                    <div id="sortbypricelow">Low Price</div>
+                    <span>|</span>
+                    <div id="sortbypricehigh">High price</div>
+                </div>
+                <div id="filterList">Current Filters: </div>
+            </section>
+            <div id="addButton">Add Item</div>
+        </section>
+
+        <main>
+            <div id="productList"></div>
+        </main>
+    </div>
+</body>
+
+</html>
