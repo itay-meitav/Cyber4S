@@ -1,4 +1,4 @@
-import { laptops, saveOnLocal, getFromLocal, IProduct, removeItem, editLocalStorage, getItemByID } from "./data";
+import { laptops, saveOnLocal, getFromLocal, IProduct, removeItem, editLocalStorage, getItemByID, addProduct } from "./data";
 
 const productList = document.getElementById("productList") as HTMLDivElement;
 let isAdmin = window.location.pathname.includes("admin");
@@ -97,6 +97,10 @@ function createSortedList(sortBy: string, isFirst: boolean) {
         editProduct();
         return;
     }
+    if (window.location.pathname.includes("add.html")) {
+        addItem();
+        return;
+    }
     if (isFirst) {
         addClickFilterEvent();
     }
@@ -185,8 +189,7 @@ function createSortedList(sortBy: string, isFirst: boolean) {
        <div class="price"><b>${sortedLaptops[i].price}${sortedLaptops[i].currency
             }</b></div>
        ${isAdmin
-                ? `<div class="edit"><a href="./edit.html?id=${sortedLaptops[i].id}">edit</a>
-       </div>`
+                ? `<a class="edit" href="./edit.html?id=${sortedLaptops[i].id}">edit</a>`
                 : ""
             }
        ${isAdmin
@@ -296,8 +299,6 @@ function getKeyFromWindowLocation(): string {
 
 function editProduct() {
     let product: IProduct = getItemByID(getKeyFromWindowLocation());
-    if (!product)
-        return
     const price = <HTMLInputElement>document.getElementById("Price");
     price.value = String(product.price);
     const title = <HTMLInputElement>document.getElementById("Title");
@@ -333,9 +334,9 @@ function editProduct() {
     const image = <HTMLInputElement>document.getElementById("Image");
     image.value = product.img;
 
-    const sumbit = document.getElementById('sumbit');
-    sumbit?.addEventListener('click', () => {
-        console.log(price);
+    const formEl = document.querySelector('#form') as HTMLElement;
+    formEl.addEventListener('submit', (e) => {
+        e.preventDefault();
         product.price = Number(price.value);
         product.title = title.value;
         product.currency = currency.value;
@@ -350,5 +351,48 @@ function editProduct() {
         product.companyLogo = logo.value;
         product.img = image.value;
         editLocalStorage(product);
+        window.location.href = './admin.html';
     })
+}
+
+function addItem() {
+    const price = document.getElementById("Price") as HTMLInputElement;
+    const title = document.getElementById("Title") as HTMLInputElement;
+    const id = document.getElementById('Id') as HTMLInputElement;
+    const currency = document.getElementById("Currency") as HTMLInputElement;
+    const brand = document.getElementById("Brand") as HTMLInputElement;
+    const type = document.getElementById("Type") as HTMLInputElement;
+    const model = document.getElementById("Model") as HTMLInputElement;
+    const ram = document.getElementById("Ram") as HTMLInputElement;
+    const memory = document.getElementById("Memory") as HTMLInputElement;
+    const processor = document.getElementById("Processor") as HTMLInputElement;
+    const resolution = document.getElementById("Resolution") as HTMLInputElement;
+    const os = document.getElementById("Os") as HTMLInputElement;
+    const logo = document.getElementById("CompanyLogo") as HTMLInputElement;
+    const image = document.getElementById("Image") as HTMLInputElement;
+
+    const formEl = document.querySelector('#form') as HTMLElement;
+    formEl.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let newProduct: IProduct = {
+            price: Number(price.value),
+            img: image.value,
+            currency: currency.value,
+            id: id.value,
+            title: title.value,
+            specs: {
+                brand: brand.value,
+                type: type.value,
+                model: model.value,
+                ram: ram.value,
+                memory: memory.value,
+                processor: processor.value,
+                resolution: resolution.value,
+                os: os.value,
+            },
+            companyLogo: logo.value,
+        }
+        addProduct(newProduct);
+        window.location.href = './admin.html';
+    });
 }

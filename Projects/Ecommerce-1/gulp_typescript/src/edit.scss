@@ -14,28 +14,26 @@ body {
 }
 
 #outButton {
-    a {
-      text-decoration: none !important;
-      text-align: center;
-      font-weight:bold;
-      font-family: "Raleway";
-      color:rgb(0, 0, 0);
-    }
-    position: relative;
-    left: 2%;
-    top: 20px;
-    text-align: center;
-    width: max-content;
-    background-color: rgba(255, 255, 255, 0.868);
-    padding: 10px 30px 10px 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition-duration: 400ms;
-    &:hover {
-      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.322);
-      cursor: pointer;
-    }
+  position: relative;
+  left: 2%;
+  top: 20px;
+  text-align: center;
+  width: max-content;
+  text-decoration: none !important;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Raleway";
+  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.868);
+  padding: 10px 30px 10px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition-duration: 400ms;
+  &:hover {
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.322);
+    cursor: pointer;
   }
+}
 
 textarea {
   width: 100%;
@@ -66,7 +64,7 @@ h1 {
 }
 
 #submit {
-    margin-top: 20px;
+  margin-top: 20px;
   width: 100%;
   min-height: 50px;
   font-family: "Poppins", sans-serif;
@@ -75,8 +73,8 @@ h1 {
   color: #fff;
   border: 1px solid #56b166;
   &:hover {
-background: darken(#56b166, 5%);
-  cursor: pointer;
+    background: darken(#56b166, 5%);
+    cursor: pointer;
   }
 }
 
@@ -88,4 +86,3 @@ background: darken(#56b166, 5%);
   font-family: "Poppins", sans-serif;
   padding-left: 5px;
 }
-

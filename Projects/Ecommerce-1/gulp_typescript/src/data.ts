@@ -609,17 +609,22 @@ export function removeItem(id: string) {
 
 export function editLocalStorage(newProduct: IProduct) {
   let products = getFromLocal();
-  console.log(products);
-
   products = products.map(product => {
     if (product.id === newProduct.id)
       return newProduct
     return product
   })
+  saveOnLocal(products);
 }
 
 export function getItemByID(id: string): IProduct {
   let product = getFromLocal();
   product = product.filter(p => p.id == id)
   return product[0]
+}
+
+export function addProduct(newProduct: IProduct) {
+  let products = getFromLocal();
+  products.push(newProduct)
+  saveOnLocal(products);
 }
