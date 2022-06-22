@@ -25,7 +25,7 @@ function lowStock(array) {
     console.log(element);
   });
 }
-// // lowStock(products);
+lowStock(products);
 
 const newMap = (map) =>
   new Map(
@@ -33,4 +33,4 @@ const newMap = (map) =>
       valueA.name.localeCompare(valueB.name)
     )
   );
-console.log(newMap(myMap));
+// console.log(newMap(myMap));
