@@ -17,17 +17,15 @@
 <body>
     <div class="container">
 
-
+        <a id="outButton" href="http://localhost:4000/">&#10060 Out</a>
         <section class="opening">
-            <a id="outButton" href="http://localhost:4000/">&#10060 Out</a>
             <div class="opening-msg-container">
                 <p class="opening1">Welcome Back Admin,</p>
                 <p class="opening2">what do you want to do today?</p>
             </div>
-            <div></div>
         </section>
 
-        <section>
+        <section class="filters">
             <div class="paramswrapper">
                 <table cellpadding=" cellspacing=" 0" border="0" class="paramsearchtable">
                     <tbody>
@@ -144,14 +142,14 @@
                     <span>|</span>
                     <div id="sortbypricehigh">High price</div>
                 </div>
-                <div id="filterList">Current Filters: </div>
+                <div id="filterList"><p>Current Filters:</p><div class="filtersContainer"></div></div>
             </section>
             <a id="addButton" href="http://localhost:4000/add.html">Add Item</a>
         </section>
 
-        <main>
-            <div id="productList"></div>
-        </main>
+
+        <div id="productList"></div>
+
     </div>
 </body>
 

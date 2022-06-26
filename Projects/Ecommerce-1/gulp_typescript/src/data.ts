@@ -1,5 +1,3 @@
-import { ListFormat } from "typescript";
-
 export interface ISpec {
   brand: string;
   type: string;
@@ -576,10 +574,6 @@ export const laptops: IProduct[] = [
 if (!getFromLocal().length) resetOnLocal();
 
 export function saveOnLocal(list: IProduct[]) {
-  //   list.forEach(element => {
-  //   window.localStorage.setItem(`${element.id}`, JSON.stringify(element));
-  // });
-
   localStorage.setItem('products', JSON.stringify(list))
 }
 
@@ -588,14 +582,6 @@ function resetOnLocal() {
 }
 
 export function getFromLocal() {
-  // let itemArray=[];
-  //   for (const item in localStorage) {
-  //     if(localStorage.getItem(item)!=null){
-  //       itemArray.push(JSON.parse(localStorage.getItem(item)!));
-  //     }
-  //   }
-
-  //  return itemArray;
   return JSON.parse(localStorage.getItem('products') || '[]') as IProduct[]
 }
 

@@ -1,83 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
-    <script src="app.js" defer></script>
-    <title>Store</title>
-  </head>
-  <body>
-    <header>
-      <a href="http://localhost:4000/"><img id="logo" src="https://i.ibb.co/HpBn6bF/Logo.jpg" alt=".computer"></a>
-      
-      <section class="login">
-            <div id="header-login-wrapper">
-              <p id="header-login-button">Log In</p>
-            </div>		
-          <div id="header-register-button">Sign Up</div>
-      </section>
-      
-      <nav>
-        <ul class="menu">
-          <li class="dropbar-btn">
-            <a href="#">Desktop Computers</a>
-            <ul class="sub-menu">
-              <li><a href="#">Recommended Computers</a></li>
-              <li><a href="#">Brand PC</a></li>
-              <li><a href="#">Processors</a></li>
-              <li><a href="#">Mother Boards</a></li>
-              <li><a href="#">Cooling Solutions</a></li>
-              <li><a href="#">Video Cards</a></li>
-            </ul>
-          </li>
-          <li class="dropbar-btn">
-            <a href="#">Laptops</a>
-            <ul class="sub-menu">
-              <li><a href="#">Brand Laptops</a></li>
-              <li><a href="#">Laptop Accessories</a></li>
-            </ul>
-          </li>
-          <li class="dropbar-btn">
-            <a href="#">Monitors</a>
-            <ul class="sub-menu">
-              <li><a href="#">Brand Monitors</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">All-in-One</a></li>
-          <li class="dropbar-btn">
-            <a href="#">Tablets</a>
-            <ul class="sub-menu">
-              <li><a href="#">Brand Tablets</a></li>
-              <li><a href="#">Tablets Cases</a></li>
-            </ul>
-          </li>
-          <li class="dropbar-btn">
-            <a href="#">Smart Watches</a>
-            <ul class="sub-menu">
-              <li><a href="#">Brand Watches</a></li>
-              <li>
-                <a href="#">Smart Watches / Bands Accessories</a>
-              </li>
-              <li><a href="#">Dive Watches</a></li>
-              <li><a href="#">Smart Watches For Kids</a></li>
-            </ul>
-          </li>
-          <li><a href="./admin.html">Admin</a></li>
-        </ul>
-        <form>
-          <input class="search" type="text" placeholder="Search..." />
-        </form>
-      </nav>
-    </header>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+  <title>Store</title>
+</head>
+
+<body>
+  <div class="container">
+
+    <section class="header">
+      <a class="logo" href="http://localhost:4000/"><img src="https://i.ibb.co/HpBn6bF/Logo.jpg"></a>
+      <div class="header-login-wrapper">
+        <p id="header-login-button">Log In</p>
+        <p id="header-register-button">Sign Up</p>
+      </div>
+    </section>
+
+    <nav>
+      <ul class="menu">
+        <li class="dropbar-btn">
+          <a href="#">Desktop Computers</a>
+          <ul class="sub-menu">
+            <li><a href="#">Recommended Computers</a></li>
+            <li><a href="#">Brand PC</a></li>
+            <li><a href="#">Processors</a></li>
+            <li><a href="#">Mother Boards</a></li>
+            <li><a href="#">Cooling Solutions</a></li>
+            <li><a href="#">Video Cards</a></li>
+          </ul>
+        </li>
+        <li class="dropbar-btn">
+          <a href="#">Laptops</a>
+          <ul class="sub-menu">
+            <li><a href="#">Brand Laptops</a></li>
+            <li><a href="#">Laptop Accessories</a></li>
+          </ul>
+        </li>
+        <li class="dropbar-btn">
+          <a href="#">Monitors</a>
+          <ul class="sub-menu">
+            <li><a href="#">Brand Monitors</a></li>
+          </ul>
+        </li>
+        <li><a href="#contact">All-in-One</a></li>
+        <li class="dropbar-btn">
+          <a href="#">Tablets</a>
+          <ul class="sub-menu">
+            <li><a href="#">Brand Tablets</a></li>
+            <li><a href="#">Tablets Cases</a></li>
+          </ul>
+        </li>
+        <li class="dropbar-btn">
+          <a href="#">Smart Watches</a>
+          <ul class="sub-menu">
+            <li><a href="#">Brand Watches</a></li>
+            <li>
+              <a href="#">Smart Watches / Bands Accessories</a>
+            </li>
+            <li><a href="#">Dive Watches</a></li>
+            <li><a href="#">Smart Watches For Kids</a></li>
+          </ul>
+        </li>
+        <li><a href="./admin.html">Admin</a></li>
+      </ul>
+      <form class="searchbox">
+        <input class="search" type="text" placeholder="Search..." />
+        <div class="svg-container">&#x1F50E;&#xFE0E;</div>
+      </form>
+    </nav>
 
 
-    <section>
+    <section class="filters">
       <div class="paramswrapper">
-        <table cellpadding=" cellspacing="0" border="0" class="paramsearchtable">
+        <table cellpadding=" cellspacing=" 0" border="0" class="paramsearchtable">
           <tbody>
             <tr valign="top">
               <td>
@@ -103,8 +107,8 @@
                 <div class="sortedItem" spec="brand">Apple</div>
                 <div class="sortedItem" spec="brand">Microsoft</div>
                 <div class="bubble" style="display: none;">
-                <div class="sortedItem" spec="brand">Acer</div>
-                <div class="sortedItem" spec="brand">Alienware</div>
+                  <div class="sortedItem" spec="brand">Acer</div>
+                  <div class="sortedItem" spec="brand">Alienware</div>
                 </div>
                 <div class="openBubble"><b>else...</b></div>
               </td>
@@ -112,9 +116,9 @@
             <tr valign="top">
               <td>
                 <div class="title">Memory Capacity</div>
-                  <div class="sortedItem" spec="memory">256GB</div>
-                  <div class="sortedItem" spec="memory">512GB</div>
-                  <div class="sortedItem" spec="memory">1TB</div>
+                <div class="sortedItem" spec="memory">256GB</div>
+                <div class="sortedItem" spec="memory">512GB</div>
+                <div class="sortedItem" spec="memory">1TB</div>
               </td>
             </tr>
             <tr valign="top">
@@ -136,12 +140,12 @@
                 <div class="sortedItem" spec="processor">Intel® Pentium® Processor</div>
                 <div class="sortedItem" spec="processor">Intel® Core™ i9 Processor</div>
                 <div class="bubble" style="display: none;">
-                <div class="sortedItem" spec="processor">AMD Ryzen™ 5 Processor</div>
-                <div class="sortedItem" spec="processor">AMD Ryzen™ 7 Processor</div>
-                <div class="sortedItem" spec="processor">AMD Ryzen™ 3 Processor</div>
-                <div class="sortedItem" spec="processor">AMD Ryzen™ 9 Processor</div>
-                <div class="sortedItem" spec="processor">Apple M1 Pro</div>
-                <div class="sortedItem" spec="processor">Apple M1 Max</div>
+                  <div class="sortedItem" spec="processor">AMD Ryzen™ 5 Processor</div>
+                  <div class="sortedItem" spec="processor">AMD Ryzen™ 7 Processor</div>
+                  <div class="sortedItem" spec="processor">AMD Ryzen™ 3 Processor</div>
+                  <div class="sortedItem" spec="processor">AMD Ryzen™ 9 Processor</div>
+                  <div class="sortedItem" spec="processor">Apple M1 Pro chip</div>
+                  <div class="sortedItem" spec="processor">Apple M1 Max chip</div>
                 </div>
                 <div class="openBubble"><b>else...</b></div>
               </td>
@@ -156,10 +160,10 @@
                 <div class="sortedItem" spec="ram">16GB</div>
                 <div class="sortedItem" spec="ram">32GB</div>
                 <div class="bubble" style="display: none;">
-                <div class="sortedItem" spec="ram">3GB</div>
-                <div class="sortedItem" spec="ram">6GB</div>
-                <div class="sortedItem" spec="ram">24GB</div>
-                <div class="sortedItem" spec="ram">64GB</div>
+                  <div class="sortedItem" spec="ram">3GB</div>
+                  <div class="sortedItem" spec="ram">6GB</div>
+                  <div class="sortedItem" spec="ram">24GB</div>
+                  <div class="sortedItem" spec="ram">64GB</div>
                 </div>
                 <div class="openBubble"><b>else...</b></div>
               </td>
@@ -173,11 +177,6 @@
                 <div class="sortedItem" spec="resolution">3024x1964</div>
                 <div class="sortedItem" spec="resolution">3072x1920</div>
                 <div class="sortedItem" spec="resolution">3456x2234</div>
-                <!-- <div class="sortedItem">Graphics Card</div>
-                <div class="sortedItem">Warranty period</div>
-                <div class="sortedItem">Touch Screen</div>
-                <div class="sortedItem">Processor generation</div>
-                <div class="sortedItem">Cores</div> -->
               </td>
             </tr>
           </tbody>
@@ -186,22 +185,26 @@
     </section>
 
 
-    <div class="sortList">Sort by: &#160;
-      <div id="sortbygeneral">General</div>
-      <span>|</span>
-      <div id="sortbyname">Name</div>
-      <span>|</span>
-      <div id="sortbypricelow">Low Price</div>
-      <span>|</span>
-      <div id="sortbypricehigh">High price</div>
-      </div>
-      <div id="filterList">Current Filters: </div>
 
-<main>
-  <div id="productList"></div>
-</main>
+    <section class="mid-page">
+      <div id="resetButton">Reset List</div>
+      <section class="sorts-filter">
+          <div class="sortList">Sort by: &#160;
+              <div id="sortbygeneral">General</div>
+              <span>|</span>
+              <div id="sortbyname">Name</div>
+              <span>|</span>
+              <div id="sortbypricelow">Low Price</div>
+              <span>|</span>
+              <div id="sortbypricehigh">High price</div>
+          </div>
+          <div id="filterList"><p>Current Filters:</p><div class="filtersContainer"></div></div>
+      </section>
+  </section>
 
-  </body>
+      <div id="productList"></div>
+
+  </div>
+</body>
+
 </html>
-
-

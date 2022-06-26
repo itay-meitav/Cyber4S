@@ -1,97 +1,55 @@
-import { laptops, saveOnLocal, getFromLocal, IProduct, removeItem, editLocalStorage, getItemByID, addProduct } from "./data";
+import { getFromLocal, IProduct } from "./data";
+import { addClickFilterEvent, filterObj, sorts, openBubble } from "./filters";
+import { editProduct, addItem, removeButton } from "./admin";
 
-const productList = document.getElementById("productList") as HTMLDivElement;
 let isAdmin = window.location.pathname.includes("admin");
 
-//laptops specs
-type TSpecs =
-    | "price"
-    | "brand"
-    | "ram"
-    | "memory"
-    | "processor"
-    | "resolution"
-    | "os";
+window.addEventListener("load", () => {
+    createSortedList("general", true);
+    removeButton();
+    sorts();
+    openBubble();
+});
 
-interface IFilterObj {
-    price: string[];
-    brand: string[];
-    model: string[];
-    ram: string[];
-    memory: string[];
-    processor: string[];
-    resolution: string[];
-    os: string[];
-}
-let filterObj: IFilterObj = {
-    price: [],
-    brand: [],
-    model: [],
-    ram: [],
-    memory: [],
-    processor: [],
-    resolution: [],
-    os: [],
-};
+export class Item {
+    data: IProduct;
+    parent: HTMLElement;
 
-//adds functionality to what happens if filter button is clicked
-function addClickFilterEvent() {
-    let filterBtns = Array.from(document.getElementsByClassName("sortedItem"));
-    let currentFiltersTitle = document.getElementById(
-        "filterList"
-    ) as HTMLDivElement;
+    constructor(item: IProduct, parent: HTMLElement) {
+        this.data = item;
+        this.parent = parent;
+        this.render();
+    }
 
-    for (let i = 0; i < filterBtns.length; i++) {
-        filterBtns[i].addEventListener("click", () => {
-            let filter: string = filterBtns[i].innerHTML;
-            let currentFilterButtons = document.getElementsByClassName("filterItem");
-
-            if (currentFilterButtons.length > 0) {
-                for (let i = 0; i < currentFilterButtons.length; i++) {
-                    if (currentFilterButtons[i].innerHTML === filter) {
-                        return null;
-                    }
-                }
-            }
-            let currentFilter = document.createElement("div");
-            currentFiltersTitle.appendChild(currentFilter);
-            currentFilter.classList.add("filterItem");
-            currentFilter.innerHTML = filter;
-
-            //spec category identification by attribute "spec"
-            let filterSpec: TSpecs = filterBtns[i].getAttribute("spec") as TSpecs;
-            currentFilter.setAttribute("spec", `${filterSpec}`);
-
-            if (!filterObj[filterSpec].includes(filter)) {
-                filterObj[filterSpec].push(filter);
-            } else {
-                return null;
-            }
-            createSortedList(filterSpec, false);
-
-            //adds cancelation functionality to filter buttons
-            currentFilter.addEventListener("click", (e) => {
-                let currentElement = e.target as HTMLDivElement;
-                let currentFilterButtonSpec = currentElement.getAttribute(
-                    "spec"
-                ) as TSpecs;
-                if (
-                    filterObj[currentFilterButtonSpec].includes(currentElement.innerHTML)
-                ) {
-                    filterObj[currentFilterButtonSpec] = filterObj[
-                        currentFilterButtonSpec
-                    ].filter((f) => f !== currentElement.innerHTML);
-                    currentElement.remove();
-                    createSortedList(currentFilterButtonSpec, false);
-                }
-            });
-        });
+    render() {
+        let laptop: HTMLDivElement = document.createElement("div");
+        this.parent.appendChild(laptop);
+        laptop.classList.add("laptop");
+        laptop.innerHTML =
+            `<img class="itemImg" src="${this.data.img}">
+        <div class="textContainer">
+        <div class="title">${this.data.title}</div>
+        <div class="specs">${Object.entries(this.data.specs).map((element) => {
+                return `<span>${element.join(": ")}</span>`;
+            }).join(" | ")}</div>
+            <div class="buttonsContainer">
+            ${isAdmin ? `<a class="edit" href="./edit.html?id=${this.data.id}">edit</a>` : ""}
+            ${isAdmin ? `<div class="remove" id="${this.data.id}">remove</div>` : ""}
+            </div>
+        </div>
+        <div class="stylishInfo">
+        <div class="serial">Serial: ${this.data.id}</div>
+        <img class="logoImg" src="${this.data.companyLogo}">
+        <div class="price"><b>${this.data.price}${this.data.currency}</b></div>
+        </div>`;
     }
 }
 
 
+
 //render laptops divs by specific sort/filter
-function createSortedList(sortBy: string, isFirst: boolean) {
+export function createSortedList(sortBy: string, isFirst: boolean) {
+    const productList = document.getElementById("productList") as HTMLDivElement;
     let sortedLaptops = getFromLocal();
     if (window.location.pathname.includes("edit.html")) {
         editProduct();
@@ -178,221 +136,8 @@ function createSortedList(sortBy: string, isFirst: boolean) {
         element.remove();
     });
 
-    //actually render all the divs
-    for (let i = 0; i < sortedLaptops.length; i++) {
-        let laptop: HTMLDivElement = document.createElement("div");
-        productList.appendChild(laptop);
-        laptop.classList.add("laptop");
-        laptop.innerHTML = `
-       <img class="itemImg" src="${sortedLaptops[i].img}">
-       <img class="logoImg" src="${sortedLaptops[i].companyLogo}">
-       <div class="price"><b>${sortedLaptops[i].price}${sortedLaptops[i].currency
-            }</b></div>
-       ${isAdmin
-                ? `<a class="edit" href="./edit.html?id=${sortedLaptops[i].id}">edit</a>`
-                : ""
-            }
-       ${isAdmin
-                ? `<div class="remove" id="${sortedLaptops[i].id}">remove</div>`
-                : ""
-            }
-       <div class="title">${sortedLaptops[i].title}</div>
-       <div class="serial">Serial: ${sortedLaptops[i].id}</div>
-       <div class="specs">${Object.entries(sortedLaptops[i].specs)
-                .map((element) => {
-                    return `<span>${element.join(": ")}</span>`;
-                })
-                .join(" | ")}</div>`;
-    }
-}
 
-window.addEventListener("load", () => {
-    createSortedList("general", true);
-    addEventListeneners();
-});
-
-function addEventListeneners() {
-    // Add event listener for delete button
-    const removeButtons = Array.from(document.getElementsByClassName("remove"));
-    for (let i = 0; i < removeButtons.length; i++) {
-        removeButtons[i].addEventListener("click", () => {
-            removeItem(removeButtons[i].id);
-            removeButtons[i].parentElement?.remove();
-        });
-    }
-
-
-    //these bunch of blocks adds click events to sorts
-    const sortByPriceLow = document.getElementById(
-        "sortbypricelow"
-    ) as HTMLDivElement;
-    if (sortByPriceLow)
-        sortByPriceLow.addEventListener("click", () => {
-            createSortedList("lowPrice", false);
-        });
-
-    const sortByPriceHigh = document.getElementById(
-        "sortbypricehigh"
-    ) as HTMLDivElement;
-    if (sortByPriceHigh)
-        sortByPriceHigh.addEventListener("click", () => {
-            createSortedList("highPrice", false);
-        });
-
-    const sortByName = document.getElementById("sortbyname") as HTMLDivElement;
-    if (sortByName)
-        sortByName.addEventListener("click", () => {
-            createSortedList("name", false);
-        });
-
-    //sort by general
-    const sortByGeneral = document.getElementById(
-        "sortbygeneral"
-    ) as HTMLDivElement;
-    if (sortByGeneral)
-        sortByGeneral.addEventListener("click", () => {
-            createSortedList("general", false);
-        });
-
-    //opens the filter's additional bubbles
-    const openBubble = document.getElementsByClassName(
-        "openBubble"
-    ) as HTMLCollectionOf<HTMLDivElement>;
-    let bubble = Array.from(document.getElementsByClassName("bubble")) as any;
-    for (let i = 0; i < openBubble.length; i++) {
-        openBubble[i].addEventListener("click", () => {
-            if (bubble[i].getAttribute("style") === "display:block;") {
-                bubble[i].setAttribute("style", "display:none;");
-            } else {
-                bubble.forEach((e: any) => {
-                    e.setAttribute("style", "display:none;");
-                });
-                bubble[i].setAttribute("style", "display:block;");
-            }
-        });
-    }
-}
-
-
-//reset list (for admin only)
-const resetButton = document.getElementById("resetButton");
-resetButton?.addEventListener("click", () => resetList());
-
-
-function resetList() {
-    localStorage.clear();
-    saveOnLocal(laptops);
-    location.reload();
-}
-
-function getKeyFromWindowLocation(): string {
-    let id = "";
-    window.location.search
-        .replace("?", "")
-        .split("&")
-        .forEach((query) => {
-            let key = query.split("=")[0];
-            if (key == "id") id = query.split("=")[1];
-        });
-    return id as string;
-}
-
-function editProduct() {
-    let product: IProduct = getItemByID(getKeyFromWindowLocation());
-    const price = <HTMLInputElement>document.getElementById("Price");
-    price.value = String(product.price);
-    const title = <HTMLInputElement>document.getElementById("Title");
-    title.value = product.title;
-    const currency = <HTMLInputElement>document.getElementById("Currency");
-    currency.value =
-        product.currency;
-    const brand = <HTMLInputElement>document.getElementById("Brand");
-    brand.value =
-        product.specs.brand;
-    const type = <HTMLInputElement>document.getElementById("Type");
-    type.value =
-        product.specs.type;
-    const model = <HTMLInputElement>document.getElementById("Model");
-    model.value =
-        product.specs.model;
-    const ram = <HTMLInputElement>document.getElementById("Ram");
-    ram.value = product.specs.ram;
-    const memory = <HTMLInputElement>document.getElementById("Memory");
-    memory.value =
-        product.specs.memory;
-    const processor = <HTMLInputElement>document.getElementById("Processor");
-    processor.value =
-        product.specs.processor;
-    const resolution = <HTMLInputElement>document.getElementById("Resolution");
-    resolution.value =
-        product.specs.resolution;
-    const os = <HTMLInputElement>document.getElementById("Os");
-    os.value = product.specs.os;
-    const logo = <HTMLInputElement>document.getElementById("CompanyLogo");
-    logo.value =
-        product.companyLogo;
-    const image = <HTMLInputElement>document.getElementById("Image");
-    image.value = product.img;
-
-    const formEl = document.querySelector('#form') as HTMLElement;
-    formEl.addEventListener('submit', (e) => {
-        e.preventDefault();
-        product.price = Number(price.value);
-        product.title = title.value;
-        product.currency = currency.value;
-        product.specs.brand = brand.value;
-        product.specs.type = type.value;
-        product.specs.model = model.value;
-        product.specs.ram = ram.value;
-        product.specs.memory = memory.value;
-        product.specs.processor = processor.value;
-        product.specs.resolution = resolution.value;
-        product.specs.os = os.value;
-        product.companyLogo = logo.value;
-        product.img = image.value;
-        editLocalStorage(product);
-        window.location.href = './admin.html';
-    })
-}
-
-function addItem() {
-    const price = document.getElementById("Price") as HTMLInputElement;
-    const title = document.getElementById("Title") as HTMLInputElement;
-    const id = document.getElementById('Id') as HTMLInputElement;
-    const currency = document.getElementById("Currency") as HTMLInputElement;
-    const brand = document.getElementById("Brand") as HTMLInputElement;
-    const type = document.getElementById("Type") as HTMLInputElement;
-    const model = document.getElementById("Model") as HTMLInputElement;
-    const ram = document.getElementById("Ram") as HTMLInputElement;
-    const memory = document.getElementById("Memory") as HTMLInputElement;
-    const processor = document.getElementById("Processor") as HTMLInputElement;
-    const resolution = document.getElementById("Resolution") as HTMLInputElement;
-    const os = document.getElementById("Os") as HTMLInputElement;
-    const logo = document.getElementById("CompanyLogo") as HTMLInputElement;
-    const image = document.getElementById("Image") as HTMLInputElement;
-
-    const formEl = document.querySelector('#form') as HTMLElement;
-    formEl.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let newProduct: IProduct = {
-            price: Number(price.value),
-            img: image.value,
-            currency: currency.value,
-            id: id.value,
-            title: title.value,
-            specs: {
-                brand: brand.value,
-                type: type.value,
-                model: model.value,
-                ram: ram.value,
-                memory: memory.value,
-                processor: processor.value,
-                resolution: resolution.value,
-                os: os.value,
-            },
-            companyLogo: logo.value,
-        }
-        addProduct(newProduct);
-        window.location.href = './admin.html';
+    sortedLaptops.forEach((element) => {
+        new Item(element, productList);
     });
 }
