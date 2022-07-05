@@ -1,0 +1,48 @@
+body {
+	background-color: white;
+	#container {
+		.list {
+			list-style-type: disclosure-closed;
+			display: none;
+			cursor: pointer;
+			width: fit-content;
+
+			.item {
+				position: relative;
+				&.visible {
+					list-style-type: disclosure-open;
+
+					> .list {
+						display: block;
+					}
+				}
+
+				> .details {
+					display: none;
+					position: absolute;
+					top: 0;
+					left: calc(100% + 20px);
+					color: black;
+					background-color: rgb(203 203 209);
+					padding: 6px 10px;
+					border-radius: 4px;
+					font-size: 13px;
+					min-width: max-content;
+				}
+
+				&.show-d {
+					> .details {
+						display: inline-flex;
+					}
+				}
+
+				&.empty {
+					list-style-type: none;
+				}
+			}
+		}
+		> .list {
+			display: block;
+		}
+	}
+}
