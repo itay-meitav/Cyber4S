@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/client.js" defer></script>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <main>
+      <div class="box">
+        <h3>Search by city</h3>
+        <input id="city-input" type="text" placeholder="city..." />
+        <button id="search-by-city">search</button>
+        <h3>get cities</h3>
+        <button id="get-cities">get</button>
+
+        <h3>output</h3>
+        <textarea
+          dir="auto"
+          name=""
+          id="output"
+          cols="30"
+          rows="10"
+          style="
+            min-width: 100%;
+            max-width: 100%;
+            max-height: 300px;
+            min-height: 250px;
+            overflow: auto;
+          "
+        ></textarea>
+      </div>
+      <div class="box">
+        <h3>Edit an agent</h3>
+        <input type="text" hidden id="agent-id" placeholder="id" />
+        <label for="first-name">first name:</label>
+        <input type="text" id="first-name" placeholder="first name" />
+        <label for="last-name">last name:</label>
+        <input type="text" id="last-name" placeholder="last name" />
+
+        <label for="date">date:</label>
+        <input type="date" id="date" />
+        <label for="license-number">license number:</label>
+        <input type="text" id="license-number" placeholder="license number" />
+
+        <label for="city">city:</label>
+        <input type="text" id="city" placeholder="city" />
+
+        <label for="status">status:</label>
+        <input type="text" id="status" placeholder="status" />
+
+        <button id="updateBtn">save changes</button>
+      </div>
+    </main>
+    <div class="box2">
+      <div id="agents"></div>
+    </div>
+  </body>
+</html>
