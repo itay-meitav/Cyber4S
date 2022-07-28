@@ -1,0 +1,92 @@
+$font-famaly: Helvetica, sans-serif;
+$primary-color: white;
+$text-color: #50a6dd;
+
+body {
+  font-family: $font-famaly;
+  color: $text-color;
+  background: $primary-color;
+  padding: 0;
+  margin: 0;
+  > .page {
+    padding: 0 10px;
+  }
+  input {
+    padding: 3px 8px;
+  }
+}
+header {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  img {
+    height: 40px;
+  }
+  a {
+    margin-left: 10px;
+    display: inline-block;
+  }
+}
+#auth {
+  > .auth {
+    > input {
+      outline: none;
+    }
+    > * {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+}
+#upload {
+  #images {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    #details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 5px;
+      #deleteBtn {
+        width: 30px;
+        text-align: center;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    img {
+      display: inline-block;
+      $size: 100px;
+      width: $size;
+      height: $size;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+  }
+  #total-size {
+    margin-top: 10px;
+  }
+  > .delete {
+    margin-top: 10px;
+  }
+}
+.wak-button {
+  color: $text-color;
+  background: $primary-color;
+  outline: none;
+  border: 1px solid $text-color;
+  border-radius: 4px;
+  padding: 3px 10px;
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+  &:active {
+    background: $text-color;
+    color: $primary-color;
+  }
+}

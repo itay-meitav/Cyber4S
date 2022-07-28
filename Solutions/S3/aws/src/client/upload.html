@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Wakka Images: Upload</title>
+    <base href="/" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <header>
+      <a href="/"><img src="/wakka-logo.svg" /></a>
+      <div class="auth">
+        <span id="username"></span>
+        <a class="wak-button" onclick="app.authModule.logout()">Exit</a>
+      </div>
+      <script>
+        app.headerModule.checkAuth();
+      </script>
+    </header>
+    <div class="page" id="upload">
+      <h1>Upload your image</h1>
+      <div class="file">
+        <input type="file" id="file" />
+      </div>
+      <div id="images"></div>
+      <div id="total-size"></div>
+      <div class="delete">
+        <button class="wak-button" onclick="app.uploadModule.deleteAll()">
+          Delete all
+        </button>
+      </div>
+    </div>
+    <script>
+      app.uploadModule.onload();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Wakka Images: Sign-up</title>
+  <base href="/">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js"></script>
+</head>
+<body>
+  <header>
+    <a href="/"><img src="/wakka-logo.svg"></a>
+    <script>app.headerModule.onload()</script>
+  </header>
+  <div class="page" id="auth">
+    <h1>Create an account</h1>
+    <div class="auth">
+      <input type="text" id="username" placeholder="Username" spellcheck="false">
+      <input type="password" id="password" placeholder="Password">
+      <button class="wak-button" onclick="app.authModule.signup()">Sign-up</button>
+    </div>
+  </div>
+</body>
+</html>
