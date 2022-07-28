@@ -2,7 +2,6 @@ import { getFromLocal, IProduct } from "./data";
 import { addClickFilterEvent, filterObj, sorts, openBubble } from "./filters";
 import { editProduct, addItem, removeButton } from "./admin";
 
-let isAdmin = window.location.pathname.includes("admin");
 
 window.addEventListener("load", () => {
     createSortedList("general", true);
@@ -14,14 +13,17 @@ window.addEventListener("load", () => {
 export class Item {
     data: IProduct;
     parent: HTMLElement;
+    isAdmin: boolean;
 
-    constructor(item: IProduct, parent: HTMLElement) {
+    constructor(item: IProduct, parent: HTMLElement, isAdmin: boolean) {
         this.data = item;
         this.parent = parent;
+        this.isAdmin = isAdmin;
         this.render();
     }
 
     render() {
+        window.location.pathname.includes("admin") ? this.isAdmin = true : this.isAdmin;
         let laptop: HTMLDivElement = document.createElement("div");
         this.parent.appendChild(laptop);
         laptop.classList.add("laptop");
@@ -33,8 +35,8 @@ export class Item {
                 return `<span>${element.join(": ")}</span>`;
             }).join(" | ")}</div>
             <div class="buttonsContainer">
-            ${isAdmin ? `<a class="edit" href="./edit.html?id=${this.data.id}">edit</a>` : ""}
-            ${isAdmin ? `<div class="remove" id="${this.data.id}">remove</div>` : ""}
+            ${this.isAdmin == true ? `<a class="edit" href="./edit.html?id=${this.data.id}">edit</a>` : ""}
+            ${this.isAdmin == true ? `<div class="remove" id="${this.data.id}">remove</div>` : ""}
             </div>
         </div>
         <div class="stylishInfo">
@@ -138,6 +140,6 @@ export function createSortedList(sortBy: string, isFirst: boolean) {
 
 
     sortedLaptops.forEach((element) => {
-        new Item(element, productList);
+        new Item(element, productList, false);
     });
 }
