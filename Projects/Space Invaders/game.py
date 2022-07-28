@@ -2,9 +2,8 @@ import curses
 
 
 def draw_menu(stdscr):
+    curses.curs_set(0)
     k = 0
-    cursor_x = 0
-    cursor_y = 0
 
     # Clear and refresh the screen for a blank canvas
     stdscr.clear()
@@ -24,8 +23,8 @@ def draw_menu(stdscr):
 
         # Declaration of strings
         title = "Space Invaders"[:width-1]
-        subtitle = "Written by Itay Meitav"[:width-1]
-        keystr = "Press any key to play!"[:width-1]
+        subtitle = "Itay Meitav"[:width-1]
+        keystr = "Click any key to start..."[:width-1]
 
         # Centering calculations
         start_x_title = int((width // 2) - (len(title) // 2) - len(title) % 2)
@@ -46,35 +45,23 @@ def draw_menu(stdscr):
         stdscr.attroff(curses.color_pair(2))
         stdscr.attroff(curses.A_BOLD)
 
-        # Turning on attributes for sub-title
+        # Turning on attributes for title
         stdscr.attron(curses.color_pair(1))
         stdscr.attron(curses.A_BOLD)
 
-        # Rendering sub-title
+        # Rendering title
         stdscr.addstr(start_y + 1, start_x_subtitle, subtitle)
 
-        # Turning off attributes for sub-title
+        # Turning off attributes for title
         stdscr.attroff(curses.color_pair(1))
         stdscr.attroff(curses.A_BOLD)
 
         # Print rest of text
         stdscr.addstr(start_y + 3, (width // 2) - 2, '-' * 4)
         stdscr.addstr(start_y + 5, start_x_keystr, keystr)
-        stdscr.addstr(start_y + 5, start_x_keystr, keystr)
-        stdscr.move(cursor_y, cursor_x)
 
-        # Refresh the screen
-        stdscr.refresh()
-        keyPress(stdscr)
-
-
-def keyPress(str):
-    while 1:
-        key = str.getch()
-        if key == curses.KEY_EXIT:
-            break
-        # else:
-        #     menu.init()
+        # Wait for next input
+        k = stdscr.getch()
 
 
 def main():

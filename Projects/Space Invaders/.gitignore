@@ -1,3 +1,2 @@
-*.sw[op]
-*.log
 __pycache__
+curses_examples
