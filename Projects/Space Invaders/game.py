@@ -1,72 +1,44 @@
-import curses
+from render import render
+from reset import reset
+from ship import ship
 
 
-def draw_menu(stdscr):
-    curses.curs_set(0)
-    k = 0
+# game settings
+class Game(object):
 
-    # Clear and refresh the screen for a blank canvas
-    stdscr.clear()
-    stdscr.refresh()
+    def __init__(self, stdscr):
+        self.stdscr = stdscr
+        self.width = 36
+        self.height = 30
+        self.pos = []
+        self.pos_x_last = 0
+        self.lives = []
+        self.pos_shoot = []
+        self.shoot_time = 0
+        self.shoots = 0
+        self.shoot_speed = 0.15
+        self.score = 0
+        self.defence = []
 
-    # Start colors in curses
-    curses.start_color()
-    curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
-    curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
+        # aliens
+        self.aliens_move_time = 0
+        self.aliens_move = 0
+        self.aliens30 = []
+        self.aliens20 = []
+        self.aliens10 = []
+        self.alien_dir = 0  # 0 left, 1 right
+        self.alien_down = 0
+        self.aliens_shoot_time = 0
+        self.aliens_shoots = 0
+        self.aliens_shoot_pos = []
+        self.aliens_speed = 0.5
+        self.aliens_shoot_speed = 0.4
 
-    # Loop where k is the last character pressed
-    while (k != ord('q')):
+    def reset(self):
+        reset(self)
 
-        # Initialization
-        stdscr.clear()
-        height, width = stdscr.getmaxyx()
+    def ship(self, event):
+        ship(self, event)
 
-        # Declaration of strings
-        title = "Space Invaders"[:width-1]
-        subtitle = "Itay Meitav"[:width-1]
-        keystr = "Click any key to start..."[:width-1]
-
-        # Centering calculations
-        start_x_title = int((width // 2) - (len(title) // 2) - len(title) % 2)
-        start_x_subtitle = int(
-            (width // 2) - (len(subtitle) // 2) - len(subtitle) % 2)
-        start_x_keystr = int(
-            (width // 2) - (len(keystr) // 2) - len(keystr) % 2)
-        start_y = int((height // 2) - 2)
-
-        # Turning on attributes for title
-        stdscr.attron(curses.color_pair(2))
-        stdscr.attron(curses.A_BOLD)
-
-        # Rendering title
-        stdscr.addstr(start_y, start_x_title, title)
-
-        # Turning off attributes for title
-        stdscr.attroff(curses.color_pair(2))
-        stdscr.attroff(curses.A_BOLD)
-
-        # Turning on attributes for title
-        stdscr.attron(curses.color_pair(1))
-        stdscr.attron(curses.A_BOLD)
-
-        # Rendering title
-        stdscr.addstr(start_y + 1, start_x_subtitle, subtitle)
-
-        # Turning off attributes for title
-        stdscr.attroff(curses.color_pair(1))
-        stdscr.attroff(curses.A_BOLD)
-
-        # Print rest of text
-        stdscr.addstr(start_y + 3, (width // 2) - 2, '-' * 4)
-        stdscr.addstr(start_y + 5, start_x_keystr, keystr)
-
-        # Wait for next input
-        k = stdscr.getch()
-
-
-def main():
-    curses.wrapper(draw_menu)
-
-
-if __name__ == "__main__":
-    main()
+    def render(self):
+        render(self)
