@@ -1,4 +1,5 @@
 def reset(self):
+
     self.stdscr.clear()
 
     # ship position

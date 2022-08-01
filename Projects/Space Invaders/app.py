@@ -4,7 +4,7 @@ from game import Game
 from time import time
 
 
-def draw_menu(stdscr):
+def draw_menu(stdscr: curses.window):
     spaceinv = Game(stdscr)
     # Clear and refresh the screen
     curses.curs_set(0)

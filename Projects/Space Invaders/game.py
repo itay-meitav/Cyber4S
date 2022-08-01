@@ -16,9 +16,10 @@ class Game(object):
         self.pos_shoot = []
         self.shoot_time = 0
         self.shoots = 0
-        self.shoot_speed = 0.15
+        self.shoot_speed = 0.05
         self.score = 0
         self.defence = []
+        self.ship_shots = 0
 
         # aliens
         self.aliens_move_time = 0
@@ -31,8 +32,8 @@ class Game(object):
         self.aliens_shoot_time = 0
         self.aliens_shoots = 0
         self.aliens_shoot_pos = []
-        self.aliens_speed = 0.5
-        self.aliens_shoot_speed = 0.4
+        self.aliens_speed = 0.2
+        self.aliens_shoot_speed = 0.2
 
     def reset(self):
         reset(self)
