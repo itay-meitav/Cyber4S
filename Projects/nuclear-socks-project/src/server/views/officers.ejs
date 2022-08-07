@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Socks Panel</title>
+    <script src="/app.js" defer></script>
+    <%- include('./partials/head') %>
+</head>
+
+<body>
+    <%- include('./partials/nav'); %>
+
+        <div class="container-fluid">
+            <div class="row">
+                <%- include('./partials/left-nav')%>
+
+                    <div class="col-md-9 pad-top-10">
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+                            </li>
+                            <li>Officers</li>
+                        </ul>
+
+                        <!--Popular-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Officers</div>
+                            <div class="panel-content">
+                                <table id="dtable" class="table">
+                                    <tr>
+                                        <td>
+                                            <span class="label label-info">
+                                                id
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                Name
+                                            </span>
+                                        </td>
+                                        <td>
+                                            Army id number
+                                        </td>
+                                        <td>
+                                            <span>
+                                                Email
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                Phone
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <% officers.forEach(officer=> { %>
+
+                                        <tr>
+                                            <td>
+                                                <span class="label label-info">
+                                                    <%= officer.id%>
+                                                </span>
+                                                <br>
+                                                <div class="buttons"
+                                                    style="display: flex; justify-content: center; gap: 4px; font-size: small;">
+                                                    <a href="/edit/officer/<%= officer.id%>">edit</a>
+                                                    <a style="cursor: pointer;"
+                                                        onclick="deleteItem('officer', '<%= officer.id%>', event)">delete</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <%= officer.name %>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <%= officer.army_id_number %>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <%= officer.email %>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <%= officer.phone %>
+                                                </span>
+                                            </td>
+
+                                            <td>
+                                                <a href="/socks?officer_id=<%= officer.id%>">
+                                                    View socks
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <% })%>
+                                            <% if (pages!=1) {%>
+                                                <tr style="border-top: none;">
+                                                    <td colspan="2" style="border-top: none;">
+                                                        <ul class="pagination">
+                                                            <% Array(pages).fill(1).forEach((_,i)=>{ %>
+                                                                <% if (i+1==curr_page){ %>
+                                                                    <li class="active"><a href="">
+                                                                            <%= i+1%>
+                                                                        </a></li>
+
+                                                                    <% } else{ %>
+                                                                        <li><a href="/officers?page=<%= i+1%>">
+                                                                                <%= i+1%>
+                                                                            </a></li>
+                                                                        <%}})%>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                </table>
+                            </div>
+                        </div>
+                        <!--End Popular-->
+                    </div>
+            </div>
+        </div>
+</body>
+
+</html>
