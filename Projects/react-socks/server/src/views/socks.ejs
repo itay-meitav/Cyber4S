@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Socks Panel</title>
+    <script src="/app.js" defer></script>
+    <%- include('./partials/head') %>
+</head>
+
+<body>
+    <%- include('./partials/nav'); %>
+
+        <div class="container-fluid">
+            <div class="row">
+                <%- include('./partials/left-nav')%>
+
+                    <div class="col-md-9 pad-top-10">
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+                            </li>
+                            <li>Socks</li>
+                        </ul>
+
+                        <!--Popular-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Socks</div>
+                            <div class="panel-content">
+                                <table id="dtable" class="table">
+                                    <tr>
+                                        <td>
+                                            <span class="label label-info">
+                                                id
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                Model
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                Quantity
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                Size
+                                            </span>
+                                        </td>
+                                        <td>
+                                            Manufacture year
+                                        </td>
+                                        <td>
+                                            <span>
+                                                Coordinates
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                Base name
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                Officer name
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <% socks.forEach(sock=> { %>
+
+                                        <tr>
+                                            <td>
+                                                <span class="label label-info">
+                                                    <%= sock.id%>
+                                                </span><br>
+                                                <div class="buttons"
+                                                    style="display: flex; justify-content: center; gap: 4px; font-size: small;">
+                                                    <a href="/edit/sock/<%= sock.id%>">edit</a>
+                                                    <a style="cursor: pointer;"
+                                                        onclick="deleteItem('sock','<%= sock.id%>', event)">delete</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <%= sock.model %>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <%= sock.quantity %>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <%= sock.size %>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                <%= sock.manufacturing_year.toISOString().split('-')[0] %>
+                                            </td>
+                                            <td>
+                                                <span><a href="/locations?id=<%=sock.location_id %>">
+                                                        <%= sock.lat +','+sock.lon %>
+                                                    </a>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <a href="/locations?id=<%= sock.location_id%>">
+                                                    <%= sock.base_name %>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="/officers?id=<%= sock.officer_id%>">
+                                                    <%= sock.name %>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="/history?sock_id=<%= sock.id%>">
+                                                    View history
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <% })%>
+                                            <% if (pages!=1) {%>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <ul class="pagination">
+                                                            <% Array(pages).fill(1).forEach((_,i)=>{ %>
+                                                                <% if (i+1==curr_page){ %>
+                                                                    <li class="active"><a href="">
+                                                                            <%= i+1%>
+                                                                        </a></li>
+
+                                                                    <% } else{ %>
+                                                                        <li><a href="/socks?page=<%= i+1%>">
+                                                                                <%= i+1%>
+                                                                            </a></li>
+                                                                        <%}})%>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                </table>
+                            </div>
+                        </div>
+                        <!--End Popular-->
+                    </div>
+            </div>
+        </div>
+</body>
+
+</html>

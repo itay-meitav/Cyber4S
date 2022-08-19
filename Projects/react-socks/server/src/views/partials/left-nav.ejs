@@ -1,0 +1,44 @@
+<div class="col-md-3 left-nav">
+    <p class="pad-top-15 text-muted">
+        <span class="glyphicon glyphicon-user"></span> Hello,
+        <strong>Admin</strong>!
+    </p>
+
+    <!---->
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">data</div>
+            <div class="panel-body list-group">
+                <a href="/socks" class="list-group-item"><span class="glyphicon glyphicon-search"></span>
+                    Socks
+                </a>
+                <a href="/locations" class="list-group-item"><span class="glyphicon glyphicon-pushpin"></span>
+                    Locations
+                </a>
+                <a href="/history" class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span>
+                    History
+                </a>
+                <a href="/officers" class="list-group-item"><span class="glyphicon glyphicon-user"></span>
+                    Officers
+                </a>
+            </div>
+        </div>
+        <!---->
+
+        <!---->
+        <% if (info.pageName) { %>
+            <div class="panel panel-default">
+                <div class="panel-heading">Tools</div>
+                <div class="panel-body list-group">
+                    <a href="/add/<%= info.pageName%>" class="list-group-item"><span
+                            class="glyphicon glyphicon-pencil"></span>
+                        Add new item</a>
+                    <span onclick="resetAll(event)" class="list-group-item" style="cursor: pointer;"><span
+                            class="glyphicon glyphicon-refresh"></span>
+                        Reset data</span>
+                </div>
+            </div>
+            <% }%>
+                <!---->
+    </div>
+</div>
