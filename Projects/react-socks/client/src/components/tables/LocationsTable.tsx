@@ -32,7 +32,7 @@ function deleteItem(id: number) {
 
 export default function LocationsTable(props: ISocksTableProps) {
   return (
-    <Table striped bordered hover size="sm">
+    <Table striped bordered hover responsive size="sm">
       <thead>
         <tr>
           {/* <TableCell>id</TableCell> */}

@@ -36,7 +36,7 @@ function deleteItem(id: number) {
 
 export default function HistoryTable(props: IHistoryTableProps) {
   return (
-    <Table striped bordered hover size="sm">
+    <Table striped bordered hover responsive size="sm">
       <thead>
         <tr style={{ textAlign: "center" }}>
           <th></th>
