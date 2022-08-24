@@ -1,0 +1,31 @@
+import React from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "./App.scss";
+import { store } from "./app/store";
+import Task2 from "./components/Task2";
+import Task3 from "./components/Task3";
+
+function App() {
+  return (
+    <Router>
+      <div className="links">
+        <Link to={"/"}>Task 2</Link>
+        <Link to={"/task3"}>Task 3</Link>
+      </div>
+      <Routes>
+        <Route path="/" element={<Task2 />} />
+        <Route
+          path="/task3"
+          element={
+            <Provider store={store}>
+              <Task3 />{" "}
+            </Provider>
+          }
+        />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
